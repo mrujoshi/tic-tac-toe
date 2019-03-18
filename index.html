@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>tic-tac-toe</title>
+<style>
+input {background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;}
+  .button{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding:14px 19px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;}
+</style>
+<script type="text/javascript">
+var x_arr = [];
+var o_arr = [];
+var arr_arr = [o_arr,x_arr
+];
+var index = true;
+var i = index?1:0;
+var arr = arr_arr[i];
+
+
+
+handleClick = function(id){
+	arr.push(id);
+	var button = document.getElementById(id);
+	index?button.value = "X":button.value = "O";
+	button.classList.add("button");
+	button.disabled = true
+	index = !index;
+	
+	if(arr.length > 2){
+		isWinner(id,button.value);
+	}
+	
+	arr = arr_arr[index?1:0];
+}
+
+isWinner = function(id, player){
+console.log(arr);
+	switch(id){
+		case '0':
+		if((arr.includes('1')&& arr.includes('2'))||(arr.includes('8')&&arr.includes('4'))||(arr.includes('3')&&arr.includes('6')))
+			{alert(player+" wins! Game Over!!!");location.reload();}
+		break;
+		case '1':
+		if((arr.includes('0')&& arr.includes('2'))||(arr.includes('7') && arr.includes('4')))
+			{alert(player+" wins! Game Over!!!");document.body.disabled="true";}
+		break;
+		case '2':
+		if((arr.includes('0')&& arr.includes('1'))||(arr.includes('5') && arr.includes('8')))
+			{alert(player+" wins! Game Over!!!");document.body.disabled="true";}
+		break;
+		case '3':if((arr.includes('0')&& arr.includes('6'))||(arr.includes('5')&&arr.includes('4')))
+			{alert(player+" wins! Game Over!!!");document.body.disabled="true";}
+		break;
+		case '4':if((arr.includes('1')&&arr.includes('7'))||(arr.includes('8')&&arr.includes('0'))||(arr.includes('3')&&arr.includes('5'))||(arr.includes('2')&&arr.includes('6')))
+			{alert(player+" wins! Game Over!!!");document.body.disabled="true";}
+		break;
+		case '5':if((arr.includes('8')&&arr.includes('2'))||(arr.includes('3')&&arr.includes('4')))
+			{alert(player+" wins! Game Over!!!");document.body.disabled="true";}
+		break;
+		case '6':
+		if((arr.includes('3')&&arr.includes('0'))||(arr.includes('8')&&arr.includes('7'))||(arr.includes('4')&&arr.includes('2')))
+			{alert(player+" wins! Game Over!!!");}
+		break;
+		case '7':if((arr.includes('8')&&arr.includes('6'))||(arr.includes('1')&&arr.includes('4')))
+			{alert(player+" wins! Game Over!!!");}
+		break;
+		case '8':if((arr.includes('7')&&arr.includes('6'))||(arr.includes('2')&&arr.includes('5'))||(arr.includes('0')&&arr.includes('4')))
+			{alert(player+" wins! Game Over!!!");}
+		break;
+		default:alert("that's an invalid input");
+	}
+	
+	
+}
+
+
+</script>
+</head>
+<body>
+<div id="gameContainer">
+<div>
+	<input id = "0" type="button" onclick="handleClick(this.id)"></input>
+	<input id = "1" type="button" onclick="handleClick(this.id)"></input>
+	<input id = "2" type="button" onclick="handleClick(this.id)"></input>
+</div>
+<div>
+	<input id = "3" type="button" onclick="handleClick(this.id)"></input>
+	<input id = "4" type="button" onclick="handleClick(this.id)"></input>
+	<input id = "5" type="button" onclick="handleClick(this.id)"></input>
+</div>
+<div>
+	<input id = "6" type="button" onclick="handleClick(this.id)"></input>
+	<input id = "7" type="button" onclick="handleClick(this.id)"></input>
+	<input id = "8" type="button" onclick="handleClick(this.id)"></input>
+</div>
+</div>
+</body>
+</html>
